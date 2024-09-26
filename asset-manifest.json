@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/Human-AI/%20/static/css/main.c1e20faa.css",
-    "main.js": "/Human-AI/%20/static/js/main.b87ce018.js",
-    "static/media/bot.png": "/Human-AI/%20/static/media/bot.391f44605aa0ab1bc559.png",
-    "index.html": "/Human-AI/%20/index.html",
-    "main.c1e20faa.css.map": "/Human-AI/%20/static/css/main.c1e20faa.css.map",
-    "main.b87ce018.js.map": "/Human-AI/%20/static/js/main.b87ce018.js.map"
+    "main.css": "/static/css/main.c1e20faa.css",
+    "main.js": "/static/js/main.c6f6bcda.js",
+    "static/media/bot.png": "/static/media/bot.391f44605aa0ab1bc559.png",
+    "index.html": "/index.html",
+    "main.c1e20faa.css.map": "/static/css/main.c1e20faa.css.map",
+    "main.c6f6bcda.js.map": "/static/js/main.c6f6bcda.js.map"
   },
   "entrypoints": [
     "static/css/main.c1e20faa.css",
-    "static/js/main.b87ce018.js"
+    "static/js/main.c6f6bcda.js"
   ]
 }
