@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import userProfilePic from './assets/human.png';
 import botProfilePic from './assets/bot.png';
 import CsvFileInput from "./components/CsvFileImport";
-import { Vega, VegaLite } from 'react-vega';
+import { VegaLite } from 'react-vega';
 
 const url = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/': 'https://human-ai.onrender.com/';
 
