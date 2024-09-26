@@ -106,6 +106,7 @@ async def query_openai(request: QueryRequest):
             return QueryResponse(response="There was an issue generating the visualization, please try again", vega_lite_json="")
         return QueryResponse(response=response.choices[0].message.parsed.response, vega_lite_json=response.choices[0].message.parsed.vega_lite_json)
     except Exception as e:
+        print(e)
         if type(e) is KeyError:
             return QueryResponse(response="Please provide a relevant prompt, thank you", vega_lite_json="")
         return QueryResponse(response="An error occurred. Please try again", vega_lite_json="")

@@ -4,7 +4,10 @@ import botProfilePic from './assets/bot.png';
 import CsvFileInput from "./components/CsvFileImport";
 import { Vega, VegaLite } from 'react-vega';
 
-const url = 'https://human-ai.onrender.com'
+//const url = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/': 'https://human-ai.onrender.com';
+
+const url = 'https://human-ai.onrender.com';
+
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -44,7 +47,7 @@ function App() {
       return;
     }
 
-    fetch(`${url}query`, {
+    fetch(`${url}/query`, {
       method: "POST",
       body: JSON.stringify({ prompt: prompt, csv_data: JSON.stringify(csv_data.slice(0,10))}),
       headers: {
