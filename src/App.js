@@ -4,7 +4,7 @@ import botProfilePic from './assets/bot.png';
 import CsvFileInput from "./components/CsvFileImport";
 import { Vega, VegaLite } from 'react-vega';
 
-const url = process.env.NODE_ENV === 'production' ? 'https://human-ai.onrender.com' : 'http://127.0.0.1:8000/';
+const url = 'https://human-ai.onrender.com'
 
 function App() {
   const [messages, setMessages] = useState([]);
