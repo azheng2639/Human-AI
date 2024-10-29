@@ -5,9 +5,9 @@ import CsvFileInput from "./components/CsvFileImport";
 import { VegaLite } from 'react-vega';
 import Markdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import {BouncingBall } from 'react-svg-spinners';
+import { BouncingBall } from 'react-svg-spinners';
 
-const url = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/': 'https://human-ai.onrender.com/';
+const url = process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000/' : 'https://human-ai.onrender.com/';
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -58,7 +58,7 @@ function App() {
 
     fetch(`${url}query`, {
       method: "POST",
-      body: JSON.stringify({ prompt: prompt, csv_data: JSON.stringify(csv_data.slice(0,10))}),
+      body: JSON.stringify({ prompt: prompt, csv_data: JSON.stringify(csv_data.slice(0, 10)) }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -71,11 +71,11 @@ function App() {
           const full_data = extractKeys(csv_data, col)
           const d = JSON.parse(data.vega_lite_json)
           d.data.values = full_data
-          const botMessage = { sender: "bot", text: data.response, spec: d};
+          const botMessage = { sender: "bot", text: data.response, spec: d };
           setMessages((prevMessages) => [...prevMessages, botMessage]);
         }
         catch (error) {
-          const botMessage = { sender: "bot", text: data.response, spec: null};
+          const botMessage = { sender: "bot", text: data.response, spec: null };
           setMessages((prevMessages) => [...prevMessages, botMessage]);
         }
       });
@@ -83,10 +83,10 @@ function App() {
 
   const previewData = () => {
     if (csv_data.length === 0) return null;
-  
+
     const headers = Object.keys(csv_data[0]);
     const previewRows = csv_data.slice(0, 10);
-  
+
     return (
       <div className="overflow-x-auto w-full">
         <table className="table-auto w-full border-collapse border border-gray-300 my-4">
@@ -126,23 +126,23 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center h-screen bg-blue p-6">
-      <div className="flex flex-col w-full max-w-4xl flex flex-col bg-blue rounded-lg shadow-md p-6 h-full">
-        <h1 className="text-5xl font-bold text-center mb-5">AI Assistant</h1>
-        <div className="flex-grow flex flex-col bg-white rounded-lg p-4 mt-4">
+    <div className="flex flex-col items-center h-screen p-6">
+      <div className="flex-grow flex flex-col w-full max-w-4xl bg-white rounded-lg shadow-md p-6">
+        <h1 className="text-4xl font-bold text-center mb-5 text-gray-800">AI Assistant</h1>
+        <div className="flex-grow flex flex-col bg-gray-50 rounded-lg p-4 mt-4">
           <CsvFileInput onFileLoad={handleFileLoad} />
           <button
             onClick={toggleDataPreview}
-            className="bg-blue-500 text-white rounded-lg mt-2 px-4 py-2"
+            className="bg-blue-600 text-white rounded-lg mt-2 px-4 py-2 hover:bg-blue-700 transition duration-300"
           >
             {showDataPreview ? "Hide Data Preview" : "Show Data Preview"}
           </button>
           {showDataPreview && previewData()}
-          <div ref={chatContainerRef} className="h-96 overflow-y-auto bg-gray-100 rounded-lg p-4 mb-4">
+          <div ref={chatContainerRef} className="h-[36rem] overflow-y-auto bg-white rounded-lg p-4 mb-4 shadow-inner">
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`flex items-start my-1 ${
+                className={`flex items-start my-2 ${
                   message.sender === "user" ? "justify-end" : "justify-start"
                 }`}
               >
@@ -150,25 +150,20 @@ function App() {
                   <img
                     src={botProfilePic}
                     alt="Bot Avatar"
-                    className="w-8 h-8 rounded-full mr-2"
+                    className="w-10 h-10 rounded-full mr-3"
                   />
                 )}
                 <div
                   className={`${
                     message.sender === "user"
                       ? "bg-purple-500 text-white"
-                      : "bg-gray-300 text-black"
-                  } rounded-lg p-2`}
+                      : "bg-gray-200 text-black"
+                  } rounded-lg p-3 `}
                 >
                   <Markdown remarkPlugins={[remarkGfm]}>{message.text}</Markdown>
                   {message.spec && (
-                    <div>
-                
-                      
-                        <div className="w-full my-4">
-                          <VegaLite spec={message.spec} />
-                        </div>
-          
+                    <div className="w-full my-4">
+                      <VegaLite spec={message.spec} />
                     </div>
                   )}
                 </div>
@@ -176,7 +171,7 @@ function App() {
                   <img
                     src={userProfilePic}
                     alt="User Avatar"
-                    className="w-8 h-8 rounded-full ml-2"
+                    className="w-10 h-10 rounded-full ml-3"
                   />
                 )}
               </div>
@@ -192,20 +187,20 @@ function App() {
           <input
             type="text"
             placeholder="Enter your message"
-            className="flex-grow border border-gray-300 rounded-lg p-4 bg-white shadow-md"
+            className="flex-grow border border-gray-300 rounded-lg p-4 bg-white shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={input}
             onChange={handleInputChange}
             onKeyPress={(e) => e.key === "Enter" && sendMessage()}
           />
           <button
             onClick={sendMessage}
-            className="bg-purple-500 text-white rounded-lg ml-2 px-6 py-2"
+            className="bg-purple-500 text-white rounded-lg ml-2 px-6 py-2 hover:bg-purple-600 transition duration-300"
           >
             Send
           </button>
           <button
             onClick={clearChat}
-            className="bg-red-500 text-white rounded-lg ml-2 px-6 py-2"
+            className="bg-red-500 text-white rounded-lg ml-2 px-6 py-2 hover:bg-red-600 transition duration-300"
           >
             Clear
           </button>
