@@ -128,17 +128,17 @@ function App() {
   return (
     <div className="flex flex-col items-center h-screen p-6">
       <div className="flex-grow flex flex-col w-full max-w-4xl bg-white rounded-lg shadow-md p-6">
-        <h1 className="text-4xl font-bold text-center mb-5 text-gray-800">AI Assistant</h1>
-        <div className="flex-grow flex flex-col bg-gray-50 rounded-lg p-4 mt-4">
+        <h1 className="text-4xl font-bold text-center mb-4 text-gray-800">AI Assistant</h1>
+        <div className="flex-grow flex flex-col bg-gray-50 rounded-lg p-4 mt-3">
           <CsvFileInput onFileLoad={handleFileLoad} />
           <button
             onClick={toggleDataPreview}
-            className="bg-blue-600 text-white rounded-lg mt-2 px-4 py-2 hover:bg-blue-700 transition duration-300"
+            className="bg-blue-600 text-white rounded-lg mt-3 px-4 py-2 hover:bg-blue-700 transition duration-300"
           >
             {showDataPreview ? "Hide Data Preview" : "Show Data Preview"}
           </button>
           {showDataPreview && previewData()}
-          <div ref={chatContainerRef} className="h-[36rem] overflow-y-auto bg-white rounded-lg p-4 mb-4 shadow-inner">
+          <div ref={chatContainerRef} className="h-[36rem] overflow-y-auto bg-white rounded-lg p-4 mt-3 mb-4 shadow-inner">
             {messages.map((message, index) => (
               <div
                 key={index}
@@ -183,7 +183,7 @@ function App() {
             )}
           </div>
         </div>
-        <div className="flex mt-4">
+        <div className="flex mt-3">
           <input
             type="text"
             placeholder="Enter your message"
@@ -202,7 +202,7 @@ function App() {
             onClick={clearChat}
             className="bg-red-500 text-white rounded-lg ml-2 px-6 py-2 hover:bg-red-600 transition duration-300"
           >
-            Clear
+            Clear Messages
           </button>
         </div>
       </div>

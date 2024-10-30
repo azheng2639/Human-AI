@@ -274,6 +274,9 @@ def query(question, system_prompt, tools, tool_map, max_iterations=10):
 @app.post("/query", response_model=QueryResponse)
 async def query_openai(request: QueryRequest):
     try:
+        print(request.csv_data)
+        if json.loads(request.csv_data) == []:
+            return QueryResponse(response="Please provide a valid CSV data", vega_lite_json="")
         prompt = request.prompt + request.csv_data
         system_prompt = f"""
                         You are a helpful assistant. Use the supplied tools to assist the user when needed. 
