@@ -128,7 +128,7 @@ function App() {
   return (
     <div className="flex flex-col items-center h-screen p-6">
       <div className="flex-grow flex flex-col w-full max-w-4xl bg-white rounded-lg shadow-md p-6">
-        <h1 className="text-4xl font-bold text-center mb-4 text-gray-800">AI Assistant</h1>
+        <h1 className="text-4xl font-bold text-center mb-4 text-gray-800">CSVis</h1>
         <div className="flex-grow flex flex-col bg-gray-50 rounded-lg p-4 mt-3">
           <CsvFileInput onFileLoad={handleFileLoad} />
           <button
