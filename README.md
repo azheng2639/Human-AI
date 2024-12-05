@@ -84,10 +84,6 @@ This will create an optimized build of the frontend in the `build` directory.
 - [FastAPI](https://fastapi.tiangolo.com/) - Backend framework
 - [OpenAI](https://openai.com/) - AI model for generating responses
 
-### Contributing
-
-Contributions are welcome! Please read the CONTRIBUTING.md for details on the code of conduct and the process for submitting pull requests.
-
 ### License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
